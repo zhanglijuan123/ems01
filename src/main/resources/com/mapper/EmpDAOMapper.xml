@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.EmpDAO">
+
+    <insert id="insert" parameterType="com.entity.Emp">
+        insert into t_emp values(#{id},#{name},#{age},#{sex},#{birthday})
+    </insert>
+
+    <select id="findPage" resultType="com.entity.Emp">
+        select id,name,age,sex,birthday from t_emp limit #{start},#{rows}
+    </select>
+    <select id="findTotals" resultType="long">
+        select count(*) from  t_emp
+    </select>
+
+    <delete id="delete" parameterType="com.entity.Emp">
+        delete from  t_emp  where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="com.entity.Emp">
+        update  t_emp set name=#{name},age=#{age},sex=#{sex},birthday=#{birthday}
+        where id=#{id}
+    </update>
+
+
+
+    <select id="queryOne" resultType="com.entity.Emp">
+        select * from t_emp where id=#{id}
+    </select>
+
+</mapper>
